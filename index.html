@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android System Update</title>
+    <style>
+        /* Стили черного хакерского экрана для смартфона */
+        body {
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 15px;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0;
+            overflow: hidden;
+            user-select: none;
+        }
+        #terminal {
+            width: 100%;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .error {
+            color: #ff0000;
+            font-weight: bold;
+        }
+        .warn {
+            color: #ffff00;
+        }
+    </style>
+</head>
+<body>
+
+<div id="terminal"></div>
+
+<script>
+// Текст, который будет поочередно выводиться на экран смартфона
+const lines = [
+    "=========================================",
+    "[ СИСТЕМА УДАЛЕННОГО ДОСТУПА ЗАПУЩЕНА ]",
+    "=========================================\n",
+    "[*] Поиск уязвимостей в ядре системы...",
+    "[+] Локальный эксплоит выполнен успешно.",
+    "[*] Установка обратного соединения с сервером...",
+    "[ OK ] Соединение зафиксировано.\n",
+    "[*] Обход защиты Android/iOS Security Shield...",
+    "<span class='error'>[!] ДОСТУП К ФАЙЛОВОЙ СИСТЕМЕ ПОЛУЧЕН.</span>\n",
+    " -> Скачивание: Контакты (Contacts.db)... 100%",
+    " -> Скачивание: История браузера... 100%",
+    " -> Скачивание: Галерея (DCIM/Camera)... 100%",
+    " -> Скачивание: Сообщения мессенджеров... 100%\n",
+    "[*] Инициализация протокола перенаправления...",
+    "[>] Перенаправление файлов на внешний сервер:",
+    "    [ПЕРЕДАЧА] Документы -> Отправлено...",
+    "    [ПЕРЕДАЧА] Загрузки -> Отправлено...",
+    "    [ПЕРЕДАЧА] Системные бэкапы -> Отправлено...\n",
+    "[*] Подключение к фронтальной камере смартфона...",
+    "[+] Поток захвачен. Включение скрытой трансляции...\n",
+    "<span class='warn'>[ ВНИМАНИЕ ] Запуск полной очистки устройства...</span>",
+    "[!] Удаление всех установленных приложений (Apps)...",
+    "    Удаление пакетов... 20%",
+    "    Удаление пакетов... 40%",
+    "    Удаление пакетов... 60%",
+    "    Удаление пакетов... 80%",
+    "    Удаление пакетов... 100%",
+    "<span class='error'>[ СТАТУС ] Все приложения и утилиты удалены.</span>\n",
+    "=========================================",
+    "<span class='error'>КРИТИЧЕСКАЯ ОШИБКА! СМАРТФОН ЗАБЛОКИРОВАН.</span>",
+    "========================================="
+];
+
+const terminal = document.getElementById('terminal');
+let lineIndex = 0;
+
+function printLine() {
+    if (lineIndex < lines.length) {
+        // Создаем новую строчку текста
+        const p = document.createElement('div');
+        p.innerHTML = lines[lineIndex];
+        terminal.appendChild(p);
+        
+        // Автоматически прокручиваем экран вниз
+        terminal.scrollTop = terminal.scrollHeight;
+        
+        lineIndex++;
+        
+        // Случайная задержка между строками для реалистичности (от 400 до 1200 миллисекунд)
+        setTimeout(printLine, Math.random() * 800 + 400);
+    } else {
+        // Финал пранка: через 2 секунды после конца текста перенаправляем на песню "Ты затроллен"
+        setTimeout(() => {
+            window.location.href = "https://www.youtube.com/watch?v=IUBkJaXtVBg&list=RDIUBkJaXtVBg&start_radio=1";
+        }, 2000);
+    }
+}
+
+// Запуск анимации текста через 1 секунду после открытия сайта
+setTimeout(printLine, 1000);
+</script>
+
+</body>
+</html>
